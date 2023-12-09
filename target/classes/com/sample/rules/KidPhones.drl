@@ -1,0 +1,13 @@
+package com.sample.rules
+
+import com.sample.KidPhones.*
+
+global AppGUI appGUI
+
+rule "init"
+when
+then
+	System.out.println("Test");
+	
+end
+
