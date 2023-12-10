@@ -1,12 +1,7 @@
 package com.sample;
 
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import javax.swing.JOptionPane;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -33,24 +28,28 @@ public class KidPhones {
 	public static class AppGUI extends JFrame {
 
 		/**
-		 * App GUI container.
+		 * GUI JFrame container with update method.
 		 */
 		private static final long serialVersionUID = 1L;
-		private static JPanel panel;
-		private static JLabel question;
-		private static JButton nextButton;
-		private static ButtonGroup optionsRBG;
+		private Integer counter;
+		private String userAnswer;
 		
-		AppGUI() {
-			panel = new JPanel();
-			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-			add(panel);
-			setSize(800, 600);
-			setVisible(true);
-		}
+		public String getUserAnswer() { return this.userAnswer; }
 		
-		static void updateGUI() {
-			
+		AppGUI() { counter = 0; }
+		
+		public void updateGUI(String question, String[] options, boolean isEnd) {
+			if (!isEnd) {
+				counter++;
+				int nOption = JOptionPane.showOptionDialog(
+						this, question, "Question " + counter.toString(), 
+						JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION, 
+						null, options, options[0]);
+				if (nOption == -1) return;
+				userAnswer = options[nOption];
+			} else {
+				JOptionPane.showMessageDialog(this, question);
+			}
 		}
 	}
 	

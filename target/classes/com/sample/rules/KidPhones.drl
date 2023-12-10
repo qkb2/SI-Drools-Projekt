@@ -1,13 +1,35 @@
 package com.sample.rules
 
-import com.sample.KidPhones.*
+import com.sample.KidPhones.AppGUI
 
 global AppGUI appGUI
 
-rule "init"
-when
-then
-	System.out.println("Test");
-	
+declare Answer
+	answer: String
 end
 
+rule "[0] Begin"
+when
+then
+	String question = "What is the most annoying thing in having children?";
+	String[] options = {
+		"They whine all the time!", 
+		"They don't care about anything...", 
+		"They are pretty costly.", 
+		"Actually they are pretty cheap. I don't mind them."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(appGUI.getUserAnswer()));
+end
+
+rule "[1] Whining"
+when
+	Answer(answer == "They whine all the time!")
+then
+	String question = "Are you about to snap under the crushing weight of constant whining?";
+	String[] options = {
+		"Yes. This is all my kid talks about. I am slowly dying.",
+		"Actually, he never brought it up. I was just thinking...",
+		"She just won't stop. MAKE IT STOP."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(appGUI.getUserAnswer()));
+end	
