@@ -63,7 +63,7 @@ rule "[1] Cheap"
 when
 	Answer(answer == "Actually they are pretty cheap. I don't mind them.")
 then
-	String question = "Just the one phone";
+	String question = "Just the one phone?";
 	String[] options = {
 		"Dude. This isn't The Wire. How many phones does she need?"};
 	appGUI.updateGUI(question, options, false);
@@ -78,15 +78,15 @@ then
 	String[] options = {
 		"They pay half, I pay half. JK, I pay for most of it",
 		"Yes. Against all scientific odds, I am made of money.",
-		"No my kid's takehome pay is hire than mine, so he's paying for all of it"};
+		"No, my kid's takehome pay is hire than mine, so he's paying for all of it"};
 	appGUI.updateGUI(question, options, false);
 	insert(new Answer(appGUI.getUserAnswer()));
 end	
 
 rule "[2] spend cash on apps"
 when
-	Answer(answer == "They pay half, I pay half. JK, I pay for most of it" || answer ==
-		"Yes. Against all scientific odds, I am made of money.")
+	Answer(answer == "They pay half, I pay half. JK, I pay for most of it" || 
+	answer == "Yes. Against all scientific odds, I am made of money.")
 then
 	String question = "Who will spend their hard-earned cash on apps, overcharges and other charges your kids make \"by mistake?\"";
 	String[] options = {
@@ -98,7 +98,8 @@ end
 
 rule "[2] Follow the rules"
 when 
-	Answer(answer == "Actually, I have strict rules about the amount of time she will spend on her phone" || answer == "I found this cell phone agreement online. She signed it, so I think we're good.")
+	Answer(answer == "Actually, I have strict rules about the amount of time she will spend on her phone" || 
+		answer == "I found this cell phone agreement online. She signed it, so I think we're good.")
 then
 	String question = "HA HA good one. Do your kids always follow your rules?";
 	String[] options = {
@@ -110,7 +111,8 @@ end
 
 rule "[2] handle losing phone"
 when 
-	Answer(answer == "No. It's like I'm invinsible. Can you see me?" || answer == "One sec, I'm just finishing a game of Bejeweled")
+	Answer(answer == "No. It's like I'm invinsible. Can you see me?" || 
+		answer == "One sec, I'm just finishing a game of Bejeweled")
 then
 	String question = "Can you handle him losing his phone LITERALLY everywhere?";
 	String[] options = {
@@ -122,7 +124,8 @@ end
 
 rule "[2] byli w totalnym szoku"
 when
-	Answer(answer == "Hang on. I can't find my phone. Can you call it?" || answer == "Nope. SHUT IT DOWN.")
+	Answer(answer == "Hang on. I can't find my phone. Can you call it?" || 
+		answer == "Nope. SHUT IT DOWN.")
 then
 	String question = "Are you seriously shoked that he lost his phone?";
 	String[] options = {
@@ -159,7 +162,10 @@ rule "[2] another phone"
 when
 	Answer(answer == "Now it looks like my phone. Neat!" || 
 	answer == "Excuse me while I curl up in a ball and weep" || 
-	answer == "Fine. I am a husk of my former self. I feel nothing")
+	answer == "Fine. I am a husk of my former self. I feel nothing" || 
+	answer == "This is my first day with my kid. We're still getting to know each other." || 
+	answer == "I guess not. Just leave me alone and let me drink."
+	)
 then
 	String question = "Will you pony up and get him another phone?";
 	String[] options = {
@@ -270,7 +276,7 @@ end
 rule "[end] Why ask"
 when
 	Answer(answer == "Yes. Finally. I shall be crowned as the greatest parent ever. Bow to me!" ||
-	answer == "No my kid's takehome pay is hire than mine, so he's paying for all of it")
+	answer == "No, my kid's takehome pay is hire than mine, so he's paying for all of it")
 then
 	String question = "WHY ARE YOU EVEN ASKING? Get a phone, live your life and savour this beautiful time together.";
 	String[] options = {""};
@@ -287,6 +293,3 @@ then
 	appGUI.updateGUI(question, options, false);
 	insert(new Answer(appGUI.getUserAnswer()));
 end	
-
-
-
