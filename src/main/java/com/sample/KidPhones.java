@@ -45,10 +45,11 @@ public class KidPhones {
 						this, question, "Question " + counter.toString(), 
 						JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION, 
 						null, options, options[0]);
-				if (nOption == -1) return;
+				if (nOption == -1) System.exit(0);
 				userAnswer = options[nOption];
 			} else {
-				JOptionPane.showMessageDialog(this, question);
+				JOptionPane.showMessageDialog(this, question, "Result", JOptionPane.PLAIN_MESSAGE);
+				System.exit(0);
 			}
 		}
 	}

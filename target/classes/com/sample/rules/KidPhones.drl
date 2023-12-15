@@ -5,6 +5,7 @@ import com.sample.KidPhones.AppGUI
 global AppGUI appGUI
 
 declare Answer
+	question: String
 	answer: String
 end
 
@@ -18,7 +19,7 @@ then
 		"They are pretty costly.", 
 		"Actually they are pretty cheap. I don't mind them."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[1] Whining"
@@ -31,5 +32,261 @@ then
 		"Actually, he never brought it up. I was just thinking...",
 		"She just won't stop. MAKE IT STOP."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[1] Don't caring"
+when 
+	Answer(answer == "They don't care about anything...")
+then
+	String question = "Do you mind if your kid never looks up from her phone again?";
+	String[] options = {
+		"Actually, I have strict rules about the amount of time she will spend on her phone",
+		"One sec, I'm just finishing a game of Bejeweled"};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end
+
+rule "[1] Costly" 
+when
+	Answer(answer == "They are pretty costly.")
+then
+	String question = "How will you feel when your kid drops and smashes the phone on the first day he has it?";
+	String[] options = {
+		"Now it looks like my phone. Neat!",
+		"Excuse me while I curl up in a ball and weep",
+		"Fine. I am a husk of my former self. I feel nothing"};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end
+
+rule "[1] Cheap" 
+when
+	Answer(answer == "Actually they are pretty cheap. I don't mind them.")
+then
+	String question = "Just the one phone?";
+	String[] options = {
+		"Dude. This isn't The Wire. How many phones does she need?"};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end
+
+rule "[1] Bankrolling"
+when
+	Answer(answer == "She just won't stop. MAKE IT STOP.")
+then
+	String question = "Are you bankrolling this entire enterprise player?";
+	String[] options = {
+		"They pay half, I pay half. JK, I pay for most of it",
+		"Yes. Against all scientific odds, I am made of money.",
+		"No, my kid's takehome pay is hire than mine, so he's paying for all of it"};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[2] spend cash on apps"
+when
+	Answer(answer == "They pay half, I pay half. JK, I pay for most of it" || 
+	answer == "Yes. Against all scientific odds, I am made of money.")
+then
+	String question = "Who will spend their hard-earned cash on apps, overcharges and other charges your kids make \"by mistake?\"";
+	String[] options = {
+		"She will. I mentioned it twice, so I think she gets it.",
+		"Whatever. I'm a human ATM."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end
+
+rule "[2] Follow the rules"
+when 
+	Answer(answer == "Actually, I have strict rules about the amount of time she will spend on her phone" || 
+		answer == "I found this cell phone agreement online. She signed it, so I think we're good.")
+then
+	String question = "HA HA good one. Do your kids always follow your rules?";
+	String[] options = {
+		"HELL YEAH. They better.",
+		"Of course. They are my sweet angels <3"};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end
+
+rule "[2] handle losing phone"
+when 
+	Answer(answer == "No. It's like I'm invinsible. Can you see me?" || 
+		answer == "One sec, I'm just finishing a game of Bejeweled")
+then
+	String question = "Can you handle him losing his phone LITERALLY everywhere?";
+	String[] options = {
+		"Hang on. I can't find my phone. Can you call it?",
+		"Nope. SHUT IT DOWN."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end
+
+rule "[2] byli w totalnym szoku"
+when
+	Answer(answer == "Hang on. I can't find my phone. Can you call it?" || 
+		answer == "Nope. SHUT IT DOWN.")
+then
+	String question = "Are you seriously shoked that he lost his phone?";
+	String[] options = {
+		"I guess not. Just leave me alone and let me drink.",
+		"This is my first day with my kid. We're still getting to know each other."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[2] urgent calls"
+when
+	Answer(answer == "HELL YEAH. They better.")
+then
+	String question = "Do you think she will answer your urgent calls and texts right away/quickly/ever?";
+	String[] options = {
+		"No. It's like I'm invinsible. Can you see me?",
+		"I found this cell phone agreement online. She signed it, so I think we're good."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[2] Bullying"
+when
+	Answer(answer == "Yes. This is all my kid talks about. I am slowly dying.")
+then
+	String question = "Do you and your kid know about bullying?";
+	String[] options = {
+		"Um ,yeah. Doi."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[2] another phone"
+when
+	Answer(answer == "Now it looks like my phone. Neat!" || 
+	answer == "Excuse me while I curl up in a ball and weep" || 
+	answer == "Fine. I am a husk of my former self. I feel nothing" || 
+	answer == "This is my first day with my kid. We're still getting to know each other." || 
+	answer == "I guess not. Just leave me alone and let me drink."
+	)
+then
+	String question = "Will you pony up and get him another phone?";
+	String[] options = {
+		"Yes, but he will work it off with hard manual labour around the house until the end of days.",
+		"What? NO. Get a job, you mooch",
+		"Whatever. I'm a human ATM."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[3] MMM_HMM"
+when
+	Answer(answer == "Dude. This isn't The Wire. How many phones does she need?")
+then
+	String question = "Mmm-hmm. What will you do next year when she wants a new phone?";
+	String[] options = {
+		"I will tell the story of how we use land lines. And make her clean out the garage.",
+		"Whatever. I'm a human ATM."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[3] HUMAN"
+when
+	Answer(answer == "She will. I mentioned it twice, so I think she gets it." ||
+	answer == "Of course. They are my sweet angels <3")
+then
+	String question = "Do you have a HUMAN child?";
+	String[] options = {
+		"Kinda? I have a robot I built in my basement. I named him Kevin."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[3] bullied"
+when
+	Answer(answer == "Um ,yeah. Doi.")
+then
+	String question = "Are you being bullied right now?";
+	String[] options = {
+		"Yes. Hold me.",
+		"No more than usual."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[3] leverage"
+when
+	Answer(answer == "No. I mean, maybe? IDK, I'm so tired." ||
+	answer == "No more than usual.")
+then
+	String question = "If you say yes, can you use this as leverage to get something you want?";
+	String[] options = {
+		"Sweet. I can get a hot tub in the backyard!"};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+rule "[3] puppy"
+when
+	Answer(answer == "Yes. Hold me.")
+then
+	String question = "Have you also promised her a puppy?";
+	String[] options = {
+		"No. I mean, maybe? IDK, I'm so tired.",
+		"Yes. Finally. I shall be crowned as the greatest parent ever. Bow to me!"};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+rule "[3] Apple Care"
+when
+	Answer(answer == "Yes, but he will work it off with hard manual labour around the house until the end of days."||
+	answer == "I will tell the story of how we use land lines. And make her clean out the garage.")
+then
+	String question = "Are you going to shell out extra money for Apple Care, extra insurance or an unbreakable case?";
+	String[] options = {
+		"Is there an unbreakable case I can shove my kid into?",
+		"Whatever. I'm a human ATM."};
+	appGUI.updateGUI(question, options, false);
+	insert(new Answer(question, appGUI.getUserAnswer()));
+end	
+
+
+rule "[end] don't get a phone"
+when
+	Answer(answer == "Actually, he never brought it up. I was just thinking..." || 
+	answer == "What? NO. Get a job, you mooch" ||
+	answer == "Is there an unbreakable case I can shove my kid into?")
+then
+	String question = "DON'T GET A PHONE. Why not spend that money on DIsney cruise? That shoud buy you at least a year.";
+	String[] options = {""};
+	appGUI.updateGUI(question, options, true);
+end	
+
+
+rule "[end] Get the phone"
+when
+	Answer(answer == "Sweet. I can get a hot tub in the backyard!" ||
+	answer == "Whatever. I'm a human ATM." )
+then
+	String question = "GET A PHONE AND DON'T LOOK BACK! You're aware of all of the frustrations, tears and money you'll go through, but it's still worth it. It's like having kids, except phones are way cooler.";
+	String[] options = {""};
+	appGUI.updateGUI(question, options, true);
+end	
+
+rule "[end] Why ask"
+when
+	Answer(answer == "Yes. Finally. I shall be crowned as the greatest parent ever. Bow to me!" ||
+	answer == "No, my kid's takehome pay is hire than mine, so he's paying for all of it")
+then
+	String question = "WHY ARE YOU EVEN ASKING? Get a phone, live your life and savour this beautiful time together.";
+	String[] options = {""};
+	appGUI.updateGUI(question, options, true);
+end	
+
+rule "[end] KEVIN"
+when
+	Answer(answer == "Kinda? I have a robot I built in my basement. I named him Kevin.")
+then
+	String question = "BUY KEVIN A PHONE! And congrats on creating your own A.I. Can you build me a Kevin too?";
+	String[] options = {""};
+	appGUI.updateGUI(question, options, true);
 end	

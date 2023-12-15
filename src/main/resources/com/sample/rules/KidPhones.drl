@@ -5,6 +5,7 @@ import com.sample.KidPhones.AppGUI
 global AppGUI appGUI
 
 declare Answer
+	question: String
 	answer: String
 end
 
@@ -18,7 +19,7 @@ then
 		"They are pretty costly.", 
 		"Actually they are pretty cheap. I don't mind them."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[1] Whining"
@@ -31,7 +32,7 @@ then
 		"Actually, he never brought it up. I was just thinking...",
 		"She just won't stop. MAKE IT STOP."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[1] Don't caring"
@@ -43,7 +44,7 @@ then
 		"Actually, I have strict rules about the amount of time she will spend on her phone",
 		"One sec, I'm just finishing a game of Bejeweled"};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[1] Costly" 
@@ -56,7 +57,7 @@ then
 		"Excuse me while I curl up in a ball and weep",
 		"Fine. I am a husk of my former self. I feel nothing"};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[1] Cheap" 
@@ -67,7 +68,7 @@ then
 	String[] options = {
 		"Dude. This isn't The Wire. How many phones does she need?"};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[1] Bankrolling"
@@ -80,7 +81,7 @@ then
 		"Yes. Against all scientific odds, I am made of money.",
 		"No, my kid's takehome pay is hire than mine, so he's paying for all of it"};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[2] spend cash on apps"
@@ -93,7 +94,7 @@ then
 		"She will. I mentioned it twice, so I think she gets it.",
 		"Whatever. I'm a human ATM."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[2] Follow the rules"
@@ -106,7 +107,7 @@ then
 		"HELL YEAH. They better.",
 		"Of course. They are my sweet angels <3"};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[2] handle losing phone"
@@ -119,7 +120,7 @@ then
 		"Hang on. I can't find my phone. Can you call it?",
 		"Nope. SHUT IT DOWN."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
 rule "[2] byli w totalnym szoku"
@@ -132,7 +133,7 @@ then
 		"I guess not. Just leave me alone and let me drink.",
 		"This is my first day with my kid. We're still getting to know each other."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[2] urgent calls"
@@ -144,7 +145,7 @@ then
 		"No. It's like I'm invinsible. Can you see me?",
 		"I found this cell phone agreement online. She signed it, so I think we're good."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[2] Bullying"
@@ -155,7 +156,7 @@ then
 	String[] options = {
 		"Um ,yeah. Doi."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[2] another phone"
@@ -173,7 +174,7 @@ then
 		"What? NO. Get a job, you mooch",
 		"Whatever. I'm a human ATM."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[3] MMM_HMM"
@@ -185,7 +186,7 @@ then
 		"I will tell the story of how we use land lines. And make her clean out the garage.",
 		"Whatever. I'm a human ATM."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[3] HUMAN"
@@ -197,7 +198,7 @@ then
 	String[] options = {
 		"Kinda? I have a robot I built in my basement. I named him Kevin."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[3] bullied"
@@ -209,7 +210,7 @@ then
 		"Yes. Hold me.",
 		"No more than usual."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[3] leverage"
@@ -221,7 +222,7 @@ then
 	String[] options = {
 		"Sweet. I can get a hot tub in the backyard!"};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 rule "[3] puppy"
@@ -233,7 +234,7 @@ then
 		"No. I mean, maybe? IDK, I'm so tired.",
 		"Yes. Finally. I shall be crowned as the greatest parent ever. Bow to me!"};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 rule "[3] Apple Care"
 when
@@ -245,7 +246,7 @@ then
 		"Is there an unbreakable case I can shove my kid into?",
 		"Whatever. I'm a human ATM."};
 	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
 
@@ -257,8 +258,7 @@ when
 then
 	String question = "DON'T GET A PHONE. Why not spend that money on DIsney cruise? That shoud buy you at least a year.";
 	String[] options = {""};
-	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	appGUI.updateGUI(question, options, true);
 end	
 
 
@@ -269,8 +269,7 @@ when
 then
 	String question = "GET A PHONE AND DON'T LOOK BACK! You're aware of all of the frustrations, tears and money you'll go through, but it's still worth it. It's like having kids, except phones are way cooler.";
 	String[] options = {""};
-	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	appGUI.updateGUI(question, options, true);
 end	
 
 rule "[end] Why ask"
@@ -280,8 +279,7 @@ when
 then
 	String question = "WHY ARE YOU EVEN ASKING? Get a phone, live your life and savour this beautiful time together.";
 	String[] options = {""};
-	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	appGUI.updateGUI(question, options, true);
 end	
 
 rule "[end] KEVIN"
@@ -290,6 +288,5 @@ when
 then
 	String question = "BUY KEVIN A PHONE! And congrats on creating your own A.I. Can you build me a Kevin too?";
 	String[] options = {""};
-	appGUI.updateGUI(question, options, false);
-	insert(new Answer(appGUI.getUserAnswer()));
+	appGUI.updateGUI(question, options, true);
 end	
