@@ -35,7 +35,7 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
-rule "[1] Don't caring"
+rule "[1] Not caring"
 when 
 	Answer(answer == "They don't care about anything...")
 then
@@ -84,7 +84,7 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
-rule "[2] spend cash on apps"
+rule "[2] Spending cash on apps"
 when
 	Answer(answer == "They pay half, I pay half. JK, I pay for most of it" || 
 	answer == "Yes. Against all scientific odds, I am made of money.")
@@ -110,7 +110,7 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
-rule "[2] handle losing phone"
+rule "[2] Handle losing phone"
 when 
 	Answer(answer == "No. It's like I'm invinsible. Can you see me?" || 
 		answer == "One sec, I'm just finishing a game of Bejeweled")
@@ -123,7 +123,7 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end
 
-rule "[2] byli w totalnym szoku"
+rule "[2] Shock"
 when
 	Answer(answer == "Hang on. I can't find my phone. Can you call it?" || 
 		answer == "Nope. SHUT IT DOWN.")
@@ -136,7 +136,7 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
-rule "[2] urgent calls"
+rule "[2] Urgent calls"
 when
 	Answer(answer == "HELL YEAH. They better.")
 then
@@ -154,12 +154,12 @@ when
 then
 	String question = "Do you and your kid know about bullying?";
 	String[] options = {
-		"Um ,yeah. Doi."};
+		"Um, yeah. Doi."};
 	appGUI.updateGUI(question, options, false);
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
-rule "[2] another phone"
+rule "[2] Another phone"
 when
 	Answer(answer == "Now it looks like my phone. Neat!" || 
 	answer == "Excuse me while I curl up in a ball and weep" || 
@@ -201,9 +201,9 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
-rule "[3] bullied"
+rule "[3] Bullied"
 when
-	Answer(answer == "Um ,yeah. Doi.")
+	Answer(answer == "Um, yeah. Doi.")
 then
 	String question = "Are you being bullied right now?";
 	String[] options = {
@@ -213,7 +213,7 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
-rule "[3] leverage"
+rule "[3] Leverage"
 when
 	Answer(answer == "No. I mean, maybe? IDK, I'm so tired." ||
 	answer == "No more than usual.")
@@ -225,7 +225,7 @@ then
 	insert(new Answer(question, appGUI.getUserAnswer()));
 end	
 
-rule "[3] puppy"
+rule "[3] Puppy"
 when
 	Answer(answer == "Yes. Hold me.")
 then
@@ -250,7 +250,7 @@ then
 end	
 
 
-rule "[end] don't get a phone"
+rule "[end] Don't get a phone"
 when
 	Answer(answer == "Actually, he never brought it up. I was just thinking..." || 
 	answer == "What? NO. Get a job, you mooch" ||
@@ -262,7 +262,7 @@ then
 end	
 
 
-rule "[end] Get the phone"
+rule "[end] Get a phone"
 when
 	Answer(answer == "Sweet. I can get a hot tub in the backyard!" ||
 	answer == "Whatever. I'm a human ATM." )
